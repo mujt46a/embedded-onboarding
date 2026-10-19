@@ -1,0 +1,30 @@
+Exercise 4 - Capture the Flag
+
+1. `command -v nm`  
+Checked to see if nm was installed.
+
+2. `command -v objdump`  
+Checked if objdump was installed.
+
+3. `command -v gdb`  
+Tried checking for gdb, but it wasn't installed on my Mac.
+
+4. `nm s-exercises/exercise4/vault.elf`  
+Used this to see what was inside the file and found win, menu, main, and secret_flag.
+
+5. `objdump -s -j .data s-exercises/exercise4/vault.elf`  
+Checked the data section and found the address for secret_flag.
+
+6. `objdump -d --start-address=0x140001450 --stop-address=0x140001475 s-exercises/exercise4/vault.elf`  
+Used this to check the win function and saw that it prints the flag.
+
+7. `objdump -d --start-address=0x140001475 --stop-address=0x1400014ef s-exercises/exercise4/vault.elf`  
+Checked the menu function and saw how it compares the password.
+
+8. `objdump -s -j .rdata --start-address=0x14000a030 --stop-address=0x14000a080 s-exercises/exercise4/vault.elf`  
+This showed the flag and password in the output.
+
+Flag: flag{arm_nm_gdb_master}
+
+I couldn't use gdb on my Mac, but I was still able to find the flag using nm and objdump.
+
