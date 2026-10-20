@@ -102,6 +102,7 @@ int main(void)
   MX_ADC_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+HAL_ADCEx_Calibration_Start(&hadc);
 HAL_ADC_Start_DMA(&hadc, (uint32_t *)&adc_raw, 1);
 HAL_TIM_Base_Start(&htim3);
   /* USER CODE END 2 */
